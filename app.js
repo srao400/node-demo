@@ -1,11 +1,14 @@
 const express = require('express');
+const logger = require('morgan');
 
 const app = express();
 
-app.use(function(request, response, next){
-   console.log(`${request.method} - ${request.path} - ${new Date().toString()}`);
-next();
-});
+// app.use(function(request, response, next){
+//    console.log(`${request.method} - ${request.path} - ${new Date().toString()}`);
+// next();
+// });
+
+app.use(logger('dev'));
 
 app.get('/hello/:name', function (request, response) {
   const name = request.params.name || 'World!';
