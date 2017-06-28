@@ -1,5 +1,11 @@
 const express = require('express');
+
 const app = express();
+
+app.use(function(request, response, next){
+   console.log(`${request.method} - ${request.path} - ${new Date().toString()}`);
+next();
+});
 
 app.get('/hello/:name', function (request, response) {
   const name = request.params.name || 'World!';
